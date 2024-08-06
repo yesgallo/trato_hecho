@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Partidas{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>Mis Partidas</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for game in games %}
+                <tr>
+                    <td>{{ game.id }}</td>
+                    <td>{{ game.date }}</td>
+                    <td>{{ game.status }}</td>
+                    <td>
+                        <a href="{{ url_for('game.view', game_id=game.id) }}" class="btn btn-primary btn-sm">Ver</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
