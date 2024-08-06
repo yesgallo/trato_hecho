@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Juego - Trato Hecho{% endblock %}
+
+{% block content %}
+<h2>Estado del Juego</h2>
+<div class="card mb-4">
+    <div class="card-body">
+        <p><strong>Nombre del Usuario:</strong> {{ user.username }}</p>
+        <p><strong>Estado del Juego:</strong> {{ game_status }}</p>
+        <p><strong>Ganancia Actual:</strong> {{ current_winning }}</p>
+        <p><strong>Última Oferta:</strong> {{ last_offer }}</p>
+        <button class="btn btn-primary" onclick="startNewGame()">Iniciar un Nuevo Juego</button>
+        <button class="btn btn-danger" onclick="endGame()">Terminar Juego</button>
+    </div>
+</div>
+<script>
+    function startNewGame() {
+        window.location.href = "{{ url_for('start_game') }}";
+    }
+
+    function endGame() {
+        window.location.href = "{{ url_for('end_game') }}";
+    }
+</script>
+{% endblock %}
+
